@@ -1,0 +1,9 @@
+sub show(+) {
+    require Dumpvalue;
+    state $p = new Dumpvalue::
+      tick => q("),
+      compactDump => 1,
+      veryCompact => 1,
+    ;
+    dumpValue $p @_;
+}
