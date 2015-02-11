@@ -15,3 +15,13 @@ sub show(+) {
 my %hash; @hash{@array} = (1) x scalar(@array);
 
 ##############################################################################
+
+my $ssh_host=q/vogen@remotehost/;
+my $file = "/var/run/moj_daemon.pid";
+
+system "ssh", $ssh_host, "test", "-e", $file;
+my $rc = $? >> 8;
+my $answer = ($rc) ? "$file doesn't exists" : "$file exists";
+print $answer;
+
+##############################################################################
